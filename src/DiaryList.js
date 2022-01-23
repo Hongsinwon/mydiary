@@ -1,6 +1,6 @@
 import DiaryItem from "./DiaryItem";
 
-const DiaryList = ({ data }) => {
+const DiaryList = ({ data, onRemove, onEdit }) => {
   return (
     <div className="DiaryList">
       <div>
@@ -8,8 +8,8 @@ const DiaryList = ({ data }) => {
         <p>{data.length}개의 일기가 있습니다.</p>
       </div>
       <div>
-        {data.map((item, index) => (
-          <DiaryItem key={index} {...item} />
+        {data.map((item) => (
+          <DiaryItem key={item.id} {...item} onRemove={onRemove} onEdit={onEdit} />
         ))}
       </div>
     </div>

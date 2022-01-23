@@ -53,6 +53,10 @@ textarea {
   padding: 20px;
 }
 
+.DiaryItem span {
+  color: #999;
+}
+
 .DiaryItem .info {
   border-bottom: 1px solid gray;
   padding-bottom: 10px;

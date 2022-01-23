@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const DiaryEditor = ({ diaryData }) => {
+const DiaryEditor = ({ onCreate }) => {
   const [state, setState] = useState({ author: "", content: "", emotion: "1" });
   const authorInput = useRef(null);
   const contentTextarea = useRef(null);
@@ -19,7 +19,8 @@ const DiaryEditor = ({ diaryData }) => {
       return contentTextarea.current.focus();
     }
     alert("저장 성공");
-    diaryData(state);
+    onCreate(state);
+    setState({ author: "", content: "", emotion: "1" });
   };
 
   return (
@@ -28,6 +29,7 @@ const DiaryEditor = ({ diaryData }) => {
       <div>
         <input
           name="author"
+          value={state.author}
           type="text"
           onChange={handleChangeState}
           ref={authorInput}
@@ -36,13 +38,18 @@ const DiaryEditor = ({ diaryData }) => {
       <div>
         <textarea
           name="content"
+          value={state.content}
           onChange={handleChangeState}
           ref={contentTextarea}
         />
       </div>
       <div>
         <span>오늘의 감정점수 : </span>
-        <select name="emotion" onChange={handleChangeState}>
+        <select
+          name="emotion"
+          value={state.emotion}
+          onChange={handleChangeState}
+        >
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
