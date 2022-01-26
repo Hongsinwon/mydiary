@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyButton, DiaryItem } from "./index";
 import { sortOptionList, filterOptionList } from "../util/optionList";
 
-//Home.js : 상단 옵션버튼 + DiaryItem
-const ControlMenu = ({ value, onChange, optionList }) => {
+// Home.js에서 사용
+// 기능 : 상단 옵션버튼 + DiaryItem
+const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
     <select
       className="ControlMenu"
@@ -18,7 +19,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 // 최신순 / 오래된순 정렬
 const DiaryList = ({ diaryList }) => {
@@ -54,6 +55,7 @@ const DiaryList = ({ diaryList }) => {
     return sortedList;
   };
 
+  //ControlMenu  sortType => 시간순 / filter => 감정
   return (
     <div className="DiaryList">
       <div className="menu_wrapper">
