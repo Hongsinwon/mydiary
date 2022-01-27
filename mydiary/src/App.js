@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, New, Edit, Diary } from "./pages/index";
@@ -36,27 +36,38 @@ export const DiaryDispatchContext = React.createContext();
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
 
+  const [Loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   useEffect(() => {
     const localDate = localStorage.getItem("diary");
     if (localDate) {
       const diaryList = JSON.parse(localDate).sort(
         (a, b) => parseInt(b.id) - parseInt(a.id)
       );
-      dataId.current = parseInt(diaryList[0].id) + 1;
 
-      dispatch({ type: "INIT", data: diaryList });
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
     }
   }, []);
 
   const dataId = useRef(0); //id값
 
   //CREATE :: 게시글 작성(기존내용 + 추가)
-  const onCreate = (date, content, emotion) => {
+  const onCreate = (date, time, content, emotion) => {
     dispatch({
       type: "CREATE",
       data: {
         id: dataId.current,
         date: new Date(date).getTime(),
+        time,
         content,
         emotion,
       },
@@ -70,12 +81,13 @@ function App() {
   };
 
   //EDIT :: 게시글 수정
-  const onEdit = (targetId, date, content, emotion) => {
+  const onEdit = (targetId, date, time, content, emotion) => {
     dispatch({
       type: "EDIT",
       data: {
         id: targetId,
         date: new Date(date).getTime(),
+        time,
         content,
         emotion,
       },
@@ -88,7 +100,11 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <Routes>
-              <Route path="/" element={<Home />} />
+              {Loading ? (
+                <Route path="/" element={<h2>로딩화면</h2>} />
+              ) : (
+                <Route path="/" element={<Home />} />
+              )}
               <Route path="/new" element={<New />} />
               <Route path="/edit/:id" element={<Edit />} />
               <Route path="/diary/:id" element={<Diary />} />

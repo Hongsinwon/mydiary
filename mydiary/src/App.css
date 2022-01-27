@@ -111,6 +111,17 @@ header button {
   font-size: 18px;
 }
 
+/* Loding */
+.Loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fdce17;
+}
+.Loading h4 {
+}
+
 /* DiaryItems */
 .DiaryItem {
   padding: 15px 0;

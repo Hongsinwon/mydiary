@@ -14,9 +14,17 @@ import { getStringDate } from "../util/dste.js";
 // New.js/ Edit.js : 일기 작성 / 수정
 //{isEdit=true, originDate=해당 id date} =>Edit.js
 const DiaryEditor = ({ isEdit, originDate }) => {
+  //시간 구하기 = 오전 오후
+  let Hour = new Date().getHours();
+  const nowMt = new Date().getMinutes();
+  const ampm = Hour >= 12 ? "오후" : "오전";
+  const nowHour = Hour >= 12 ? (Hour -= 12) : Hour;
+  const [time, setTime] = useState(`${ampm} ${nowHour}:${nowMt}`);
+
   const [date, setDate] = useState(getStringDate(new Date()));
   const [content, setContent] = useState("");
   const [emotion, setEmotion] = useState(3); //기존감정 index
+  console.log(nowHour);
 
   const navigate = useNavigate();
   const contentRef = useRef(); //
@@ -40,9 +48,9 @@ const DiaryEditor = ({ isEdit, originDate }) => {
       )
     ) {
       if (!isEdit) {
-        onCreate(date, content, emotion);
+        onCreate(date, time, content, emotion);
       } else {
-        onEdit(originDate.id, date, content, emotion);
+        onEdit(originDate.id, date, time, content, emotion);
       }
     }
     navigate("/", { replace: true });
@@ -60,6 +68,7 @@ const DiaryEditor = ({ isEdit, originDate }) => {
       setDate(getStringDate(new Date(parseInt(originDate.date))));
       setEmotion(originDate.emotion);
       setContent(originDate.content);
+      setTime(`${ampm} ${nowHour}:${nowMt}`);
     }
   }, [isEdit, originDate]);
 
@@ -111,7 +120,7 @@ const DiaryEditor = ({ isEdit, originDate }) => {
           <h4>오늘의 일기</h4>
           <div className="input_box text_wrapper">
             <textarea
-              placeholder="오늘은 어땟나요?"
+              placeholder="오늘 기분은 어땠나요??"
               value={content}
               ref={contentRef}
               onChange={(e) => setContent(e.target.value)}

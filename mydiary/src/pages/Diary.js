@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { DiaryStateContext } from "../App";
 import { MyHeader, MyButton } from "../components";
-import { getStringDate } from "../util/dste.js";
+//import { getStringDate } from "../util/dste.js";
 import { emotionList } from "../util/emotion.js";
 
 const Diary = () => {
@@ -11,6 +11,27 @@ const Diary = () => {
 
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const headerDate = new Date();
+  const arrDayStr = [
+    "일요일",
+    "월요일",
+    "화요일",
+    "수요일",
+    "목요일",
+    "금요알",
+    "토요일",
+  ];
+  const dateText = `
+  ${headerDate.getFullYear(date)}년 
+  ${headerDate.getMonth(date) + 1}월 
+  ${headerDate.getDate(date)}일 
+  ${arrDayStr[headerDate.getDay(date)]}`;
+
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 ${id}번 일기`;
+  }, []);
 
   useEffect(() => {
     if (diaryList.length >= 1) {
@@ -36,7 +57,7 @@ const Diary = () => {
     return (
       <div className="DiaryPage">
         <MyHeader
-          headText={`${getStringDate(new Date(date.date))} 기록`}
+          headText={`${dateText}`}
           leftChild={
             <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
           }

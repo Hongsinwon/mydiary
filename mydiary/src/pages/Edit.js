@@ -10,6 +10,11 @@ const Edit = () => {
   const { id } = useParams(); //현재 페이지 id
 
   useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 ${id}번 일기 수정`;
+  }, []);
+
+  useEffect(() => {
     if (diaryList.length >= 1) {
       // id 동일한지 체크
       const targetDiary = diaryList.find(

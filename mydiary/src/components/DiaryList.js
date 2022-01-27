@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MyButton, DiaryItem } from "./index";
 import { sortOptionList, filterOptionList } from "../util/optionList";
@@ -40,9 +40,9 @@ const DiaryList = ({ diaryList }) => {
     // 시간 순서 비교
     const compare = (a, b) => {
       if (sortType === "latest") {
-        return parseInt(b.date) - parseInt(a.date);
+        return parseInt(b.id) - parseInt(a.id);
       } else {
-        return parseInt(a.date) - parseInt(b.date);
+        return parseInt(a.id) - parseInt(b.id);
       }
     };
 
