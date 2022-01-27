@@ -36,8 +36,8 @@ export const DiaryDispatchContext = React.createContext();
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
 
+  //로딩화먄
   const [Loading, setLoading] = useState(true);
-
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -61,7 +61,7 @@ function App() {
   const dataId = useRef(0); //id값
 
   //CREATE :: 게시글 작성(기존내용 + 추가)
-  const onCreate = (date, time, content, emotion) => {
+  const onCreate = (date, time, content, emotion, image) => {
     dispatch({
       type: "CREATE",
       data: {
@@ -70,6 +70,7 @@ function App() {
         time,
         content,
         emotion,
+        image,
       },
     });
     dataId.current += 1;
@@ -81,7 +82,7 @@ function App() {
   };
 
   //EDIT :: 게시글 수정
-  const onEdit = (targetId, date, time, content, emotion) => {
+  const onEdit = (targetId, date, time, content, emotion, image) => {
     dispatch({
       type: "EDIT",
       data: {
@@ -90,6 +91,7 @@ function App() {
         time,
         content,
         emotion,
+        image,
       },
     });
   };

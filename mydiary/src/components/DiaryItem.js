@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { DiaryDispatchContext } from "./../App.js";
 import { MyButton } from ".";
 
 // DiaryList.js : 작성 List
-const DiaryItem = ({ id, emotion, time, content, date }) => {
+const DiaryItem = ({ id, emotion, time, content, date, image }) => {
+  const [dropdown, setDropdown] = useState(false);
+  const btnEl = useRef(null);
+
+  useEffect(() => {
+    const onClick = (e) => {
+      if (!btnEl.current?.contains(e.target)) {
+        setDropdown(false);
+      }
+    };
+
+    document.body.addEventListener("click", onClick);
+
+    return () => {
+      document.body.removeEventListener("click", onClick);
+    };
+  }, []);
+
   const navigate = useNavigate();
   const arrDayStr = [
     "일요일",
@@ -11,7 +29,7 @@ const DiaryItem = ({ id, emotion, time, content, date }) => {
     "화요일",
     "수요일",
     "목요일",
-    "금요알",
+    "금요일",
     "토요일",
   ];
 
@@ -25,31 +43,55 @@ const DiaryItem = ({ id, emotion, time, content, date }) => {
     navigate(`/diary/${id}`);
   };
 
+  //onClick={onEdit}
   const onEdit = () => {
     navigate(`/edit/${id}`);
+  };
+  const { onRemove } = useContext(DiaryDispatchContext);
+  const headleRemove = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      onRemove(id);
+      navigate("/", { replace: true });
+    }
   };
 
   //content.slice(0, 25)
   return (
-    <div className="DiaryItem">
-      <div
-        onClick={goDetail}
-        className={[
-          "emotion_img_wrapper",
-          `emotion_img_wrapper_${emotion}`,
-        ].join(" ")}
-      >
-        <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
-      </div>
-      <div onClick={goDetail} className="Info_wrapper">
-        <div className="diary_date">
-          {dateText} <span>{dayText}</span>
+    <div className="">
+      <div className="DiaryItem">
+        <div
+          onClick={goDetail}
+          className={[
+            "emotion_img_wrapper",
+            `emotion_img_wrapper_${emotion}`,
+          ].join(" ")}
+        >
+          <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
         </div>
-        <div>{time} 작성</div>
-        <div className="diary_content_preview">{content.slice(0, 25)}</div>
+        <div onClick={goDetail} className="Info_wrapper">
+          <div className="diary_date">
+            {dateText} <span>{dayText}</span>
+          </div>
+          <div>{time} 작성</div>
+        </div>
+        <div className="btn_wrapper" ref={btnEl}>
+          <MyButton
+            text={"더 보기"}
+            onClick={() => setDropdown((cur) => !cur)}
+          />
+          {dropdown && (
+            <div className="correction_delete">
+              <ul>
+                <li onClick={onEdit}>수정하기</li>
+                <li onClick={headleRemove}>삭제하기</li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
-      <div onClick={onEdit} className="btn_wrapper">
-        <MyButton text={"수정하기"} />
+      <div onClick={goDetail}>
+        <img src={image} className="thumbNail" />
+        <div className="diary_content_preview">{content.slice(0, 25)}</div>
       </div>
     </div>
   );

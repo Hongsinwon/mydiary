@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { DiaryStateContext } from "../App";
 import { MyHeader, MyButton } from "../components";
-//import { getStringDate } from "../util/dste.js";
 import { emotionList } from "../util/emotion.js";
 
 const Diary = () => {
@@ -19,7 +18,7 @@ const Diary = () => {
     "화요일",
     "수요일",
     "목요일",
-    "금요알",
+    "금요일",
     "토요일",
   ];
   const dateText = `
@@ -85,6 +84,7 @@ const Diary = () => {
           </section>
           <section>
             <h4>오늘의 일기</h4>
+            <img src={date.image} className="thumbNail" />
             <div className="diary_content_wrapper">
               <p>{date.content}</p>
             </div>

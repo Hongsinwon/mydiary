@@ -21,6 +21,14 @@ body {
   }
 }
 
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
 #root {
   background-color: #fff;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
@@ -178,7 +186,33 @@ header button {
 }
 
 .DiaryItem .btn_wrapper {
+  position: relative;
   min-width: 70px;
+}
+
+.DiaryItem .correction_delete {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+.DiaryItem .correction_delete li {
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.DiaryItem .correction_delete li:first-child {
+  border-bottom: 1px solid #eee;
+}
+
+.DiaryItem .correction_delete li:last-child {
+  color: red;
 }
 
 /* DiaryEditor */
@@ -214,6 +248,23 @@ header button {
   resize: vertical;
   border: none;
   background-color: #ececec;
+}
+
+.todayDiary {
+  display: flex;
+  justify-content: space-between;
+}
+.todayDiary button {
+  margin: 20px 0;
+}
+
+.todayDiary input {
+  display: none;
+}
+
+.thumbNail {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 /* EmotionItem */

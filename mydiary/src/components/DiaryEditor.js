@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { MyHeader, MyButton, EmotionItem } from "./index";
 import { emotionList } from "../util/emotion";
 import { DiaryDispatchContext } from "./../App.js";
-import { getStringDate } from "../util/dste.js";
+import { getStringDate } from "../util/dste";
 
 // New.js/ Edit.js : 일기 작성 / 수정
 //{isEdit=true, originDate=해당 id date} =>Edit.js
@@ -19,18 +19,28 @@ const DiaryEditor = ({ isEdit, originDate }) => {
   const nowMt = new Date().getMinutes();
   const ampm = Hour >= 12 ? "오후" : "오전";
   const nowHour = Hour >= 12 ? (Hour -= 12) : Hour;
-  const [time, setTime] = useState(`${ampm} ${nowHour}:${nowMt}`);
+  const [time, setTime] = useState(
+    `${ampm} ${nowHour}:${String(nowMt).padStart(2, "0")}`
+  ); //(오후/오전) 시 : 분
 
-  const [date, setDate] = useState(getStringDate(new Date()));
-  const [content, setContent] = useState("");
+  const [image, setImage] = useState(); //이미지 한장만
+  const fileEl = useRef();
+
+  const utcDate = new Date();
+  const today = new Date(
+    utcDate.getTime() - utcDate.getTimezoneOffset() * 60000
+  ).toISOString();
+  const [date, setDate] = useState(today.slice(0, 10)); //년월일
+
+  const contentRef = useRef();
+
+  const [content, setContent] = useState(""); //일기내용
   const [emotion, setEmotion] = useState(3); //기존감정 index
-  console.log(nowHour);
 
   const navigate = useNavigate();
-  const contentRef = useRef(); //
 
   //onCreate : 기존내용 + 추가 , onEdit : 내용수정
-  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
 
   const handleClickEmote = useCallback((emotion) => {
     setEmotion(emotion);
@@ -41,26 +51,19 @@ const DiaryEditor = ({ isEdit, originDate }) => {
     if (content.length < 1) {
       return contentRef.current.focus();
     }
-
     if (
       window.confirm(
         isEdit ? "일기를 수정하시겠습니까? " : "새로운 일기를 작성하시겠습니까?"
       )
     ) {
       if (!isEdit) {
-        onCreate(date, time, content, emotion);
+        onCreate(date, time, content, emotion, image);
       } else {
-        onEdit(originDate.id, date, time, content, emotion);
+        setTime(`${ampm} ${nowHour}:${nowMt}`);
+        onEdit(originDate.id, date, time, content, emotion, image);
       }
     }
     navigate("/", { replace: true });
-  };
-
-  const headleRemove = () => {
-    if (window.confirm("정말 삭제하시겠습니까?")) {
-      onRemove(originDate.id);
-      navigate("/", { replace: true });
-    }
   };
 
   useEffect(() => {
@@ -69,8 +72,27 @@ const DiaryEditor = ({ isEdit, originDate }) => {
       setEmotion(originDate.emotion);
       setContent(originDate.content);
       setTime(`${ampm} ${nowHour}:${nowMt}`);
+      setImage(originDate.image);
     }
   }, [isEdit, originDate]);
+
+  const handleFileChange = useCallback(
+    (e) => {
+      const imgFile = e.target.files[0];
+
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(imgFile);
+      fileReader.onload = () => {
+        const newImage = fileReader.result;
+        setImage(newImage);
+      };
+    },
+    [image]
+  );
+
+  const imgUpload = () => {
+    return fileEl.current.click();
+  };
 
   return (
     <div className="DiaryEditor">
@@ -78,15 +100,6 @@ const DiaryEditor = ({ isEdit, originDate }) => {
         headText={isEdit ? "일기 수정하기" : "새 일기쓰기"}
         leftChild={
           <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
-        }
-        rightChild={
-          isEdit && (
-            <MyButton
-              text={"삭제하기"}
-              type={"negative"}
-              onClick={headleRemove}
-            />
-          )
         }
       />
       <div>
@@ -117,7 +130,21 @@ const DiaryEditor = ({ isEdit, originDate }) => {
         </section>
 
         <section>
-          <h4>오늘의 일기</h4>
+          <div className="todayDiary">
+            <h4>오늘의 일기</h4>
+            <MyButton
+              text={"이미지 가져오기"}
+              type={"positive"}
+              onClick={imgUpload}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              ref={fileEl}
+            />
+          </div>
+          <img src={image} className="thumbNail" />
           <div className="input_box text_wrapper">
             <textarea
               placeholder="오늘 기분은 어땠나요??"
@@ -129,7 +156,6 @@ const DiaryEditor = ({ isEdit, originDate }) => {
         </section>
       </div>
       <div className="DiaryEditor_btn">
-        <MyButton text={"뒤로가기"} onClick={() => navigate(-1)} />
         <MyButton text={"작성완료"} type={"positive"} onClick={handleSubmit} />
       </div>
     </div>
