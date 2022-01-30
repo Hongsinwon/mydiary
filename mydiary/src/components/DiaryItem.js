@@ -15,6 +15,8 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
       }
     };
 
+    console.log(image);
+
     document.body.addEventListener("click", onClick);
 
     return () => {
@@ -57,7 +59,7 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
 
   //content.slice(0, 25)
   return (
-    <div className="">
+    <div className="ItemWrapper">
       <div className="DiaryItem">
         <div
           onClick={goDetail}
@@ -90,8 +92,8 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
         </div>
       </div>
       <div onClick={goDetail}>
-        <img src={image} className="thumbNail" />
         <div className="diary_content_preview">{content.slice(0, 25)}</div>
+        {image !== undefined && <img src={image} className="thumbNail" />}
       </div>
     </div>
   );
