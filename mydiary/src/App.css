@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 body {
   margin: 0;
   min-height: 100vh;
@@ -6,7 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f6f6f6;
-  font-family: "Yeon Sung";
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 @media (min-width: 650px) {
@@ -46,13 +46,13 @@ li {
   border: none;
   border-radius: 5px;
 
-  font-size: 18px;
+  font-size: 14px;
   white-space: nowrap;
-  font-family: "Nanum Pen Script";
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .MyButton_default {
-  background-color: #ececec;
+  background-color: transparent;
   color: #000;
 }
 
@@ -77,8 +77,9 @@ header > div {
 }
 header .head_text {
   width: 50%;
-  font-size: 25px;
+  font-size: 22px;
   justify-content: center;
+  font-weight: bold;
 }
 
 header .head_btn_left {
@@ -90,10 +91,14 @@ header .head_btn_right {
   justify-content: end;
 }
 header button {
-  font-family: "Nanum Pen Script";
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 /* DiaryList */
+.DiaryList {
+  padding-bottom: 60px;
+}
+
 .DiaryList .menu_wrapper {
   margin-top: 20px;
   margin-bottom: 30px;
@@ -102,10 +107,21 @@ header button {
 }
 
 .DiaryList .menu_wrapper .right_col {
-  flex-grow: 1;
+  position: fixed;
+  width: 640px;
+  bottom: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: bold;
 }
+
 .DiaryList .menu_wrapper .right_col button {
   width: 100%;
+  height: 50px;
+  bottom: 16px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .DiaryList .ControlMenu {
@@ -115,8 +131,8 @@ header button {
   background-color: #ececec;
   padding: 10px 20px;
   cursor: pointer;
-  font-family: "Nanum Pen script";
-  font-size: 18px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
 }
 
 /* Loding */
@@ -134,7 +150,7 @@ header button {
 
 .ItemWrapper {
   margin-bottom: 24px;
-  padding: 10px 16px;
+  padding: 5px 15px 20px;
   border: 1px solid #ececec;
   border-radius: 5px;
   box-shadow: 0 0 7px #dedede;
@@ -163,11 +179,17 @@ header button {
 .DiaryItem .diary_date {
   margin-bottom: 5px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
 }
 
-.DiaryItem .diary_content_preview {
-  font-size: 18px;
+.diary_time {
+  font-size: 13px;
+  color: #999;
+}
+
+.diary_content_preview {
+  font-size: 16px;
+  padding: 16px 8px;
 }
 
 .DiaryItem .btn_wrapper {
@@ -219,13 +241,13 @@ header button {
   border-radius: 5px;
   background-color: #ececec;
   font-size: 20px;
-  font-family: "Nanum Pen script";
+  font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
 }
 
 .DiaryEditor textarea {
   padding: 20px;
-  font-family: "Nanum Pen script";
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 20px;
   box-sizing: border-box;
   width: 100%;
@@ -249,10 +271,6 @@ header button {
 
 .thumbNail {
   width: 100%;
-}
-
-.diary_content_preview {
-  padding: 16px 0;
 }
 
 /* EmotionItem */
@@ -384,7 +402,7 @@ header button {
   padding: 20px;
   text-align: left;
   font-size: 20px;
-  font-family: "Yeon Sung";
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
   line-height: 1.5;
 }

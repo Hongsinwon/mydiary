@@ -59,6 +59,7 @@ const DiaryList = ({ diaryList }) => {
   return (
     <div className="DiaryList">
       <div className="menu_wrapper">
+        <p>asdasdasdasd</p>
         <div className="left_col">
           <ControlMenu
             value={sortType}
@@ -71,6 +72,12 @@ const DiaryList = ({ diaryList }) => {
             optionList={filterOptionList}
           />
         </div>
+      </div>
+
+      {getProcessedDiaryList().map((it) => (
+        <DiaryItem key={it.id} {...it} />
+      ))}
+      <div className="menu_wrapper">
         <div className="right_col">
           <MyButton
             type={"positive"}
@@ -79,10 +86,6 @@ const DiaryList = ({ diaryList }) => {
           />
         </div>
       </div>
-
-      {getProcessedDiaryList().map((it) => (
-        <DiaryItem key={it.id} {...it} />
-      ))}
     </div>
   );
 };

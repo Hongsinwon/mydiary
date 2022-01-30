@@ -74,7 +74,7 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
           <div className="diary_date">
             {dateText} <span>{dayText}</span>
           </div>
-          <div>{time} 작성</div>
+          <div className="diary_time">{time} 작성</div>
         </div>
         <div className="btn_wrapper" ref={btnEl}>
           <MyButton
