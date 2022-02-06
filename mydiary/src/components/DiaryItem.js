@@ -77,10 +77,7 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
           <div className="diary_time">{time} 작성</div>
         </div>
         <div className="btn_wrapper" ref={btnEl}>
-          <MyButton
-            text={"더 보기"}
-            onClick={() => setDropdown((cur) => !cur)}
-          />
+          <MyButton text={"💬"} onClick={() => setDropdown((cur) => !cur)} />
           {dropdown && (
             <div className="correction_delete">
               <ul>
@@ -91,7 +88,7 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
           )}
         </div>
       </div>
-      <div onClick={goDetail}>
+      <div onClick={goDetail} className="diary_content">
         <div className="diary_content_preview">{content.slice(0, 25)}</div>
         {image !== undefined && <img src={image} className="thumbNail" />}
       </div>

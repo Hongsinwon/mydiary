@@ -98,13 +98,11 @@ const DiaryEditor = ({ isEdit, originDate }) => {
     <div className="DiaryEditor">
       <MyHeader
         headText={isEdit ? "일기 수정하기" : "새 일기쓰기"}
-        leftChild={
-          <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
-        }
+        leftChild={<MyButton text={"<"} onClick={() => navigate(-1)} />}
       />
       <div>
-        <section>
-          <h4>오늘은 언제인가요?</h4>
+        <section className="flex_diaryeditor">
+          <h4>📆 오늘은 언제인가요?</h4>
           <div className="input_box">
             <input
               className="input_date"
@@ -116,7 +114,7 @@ const DiaryEditor = ({ isEdit, originDate }) => {
         </section>
 
         <section>
-          <h4>오늘의 감정</h4>
+          <h4>🙌 오늘의 감정</h4>
           <div className="input_box emotion_list_wrapper">
             {emotionList.map((it) => (
               <EmotionItem
@@ -131,9 +129,9 @@ const DiaryEditor = ({ isEdit, originDate }) => {
 
         <section>
           <div className="todayDiary">
-            <h4>오늘의 일기</h4>
+            <h4>📝 오늘의 일기</h4>
             <MyButton
-              text={"이미지 가져오기"}
+              text={"📂 이미지 가져오기"}
               type={"positive"}
               onClick={imgUpload}
             />

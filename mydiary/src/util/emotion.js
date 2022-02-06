@@ -1,9 +1,10 @@
 // Diary.js / DiaryEditor.js - emotion List
+//emotion_img: process.env.PUBLIC_URL + `/assets/emotion5.png`,
 export const emotionList = [
   {
     emotion_id: 1,
-    emotion_img: process.env.PUBLIC_URL + `/assets/emotion1.png`,
-    emotion_descript: "완전 좋음",
+    emotion_img: process.env.PUBLIC_URL + `/assets/emotion1.png `,
+    emotion_descript: "행복",
   },
   {
     emotion_id: 2,
@@ -23,6 +24,6 @@ export const emotionList = [
   {
     emotion_id: 5,
     emotion_img: process.env.PUBLIC_URL + `/assets/emotion5.png`,
-    emotion_descript: "완전 나쁨",
+    emotion_descript: "화남",
   },
 ];

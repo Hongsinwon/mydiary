@@ -48,16 +48,15 @@ li {
 
   font-size: 14px;
   white-space: nowrap;
-  font-family: "Noto Sans KR", sans-serif;
 }
 
 .MyButton_default {
-  background-color: transparent;
-  color: #000;
+  color: #666;
+  font-weight: bold;
 }
 
 .MyButton_positive {
-  background-color: #64c964;
+  background-color: #1f64ff;
   color: #fff;
 }
 .MyButton_negative {
@@ -90,9 +89,6 @@ header .head_btn_right {
   width: 25%;
   justify-content: end;
 }
-header button {
-  font-family: "Noto Sans KR", sans-serif;
-}
 
 /* DiaryList */
 .DiaryList {
@@ -100,50 +96,77 @@ header button {
 }
 
 .DiaryList .menu_wrapper {
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin: 15px 0;
   display: flex;
   justify-content: space-between;
 }
 
-.DiaryList .menu_wrapper .right_col {
+.DiaryList .menu_wrapper .menu_diary-length {
+  font-size: 16px;
+  font-weight: bold;
+  color: #252525;
+}
+
+.DiaryList .menu_wrapper .menu_diary-length span {
+  font-size: 22px;
+  color: #1f64ff;
+}
+
+.DiaryList .menu_wrapper .left_col {
+  margin-top: 10px;
+}
+
+.DiaryList .menu_wrapper .bottom_col {
   position: fixed;
-  width: 640px;
   bottom: 16px;
   box-sizing: border-box;
   font-size: 16px;
   font-weight: bold;
 }
 
-.DiaryList .menu_wrapper .right_col button {
+.DiaryList .menu_wrapper .bottom_col button {
   width: 100%;
   height: 50px;
   bottom: 16px;
   box-sizing: border-box;
   font-size: 16px;
-  font-weight: bold;
+}
+
+@media (min-width: 700px) {
+  .DiaryList .menu_wrapper .bottom_col {
+    width: 640px;
+  }
+}
+
+@media (max-width: 700px) {
+  .DiaryList .menu_wrapper .bottom_col {
+    left: 20px;
+    right: 20px;
+  }
 }
 
 .DiaryList .ControlMenu {
   margin-right: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #ececec;
+  background-color: #f5f5f5;
   padding: 10px 20px;
   cursor: pointer;
-  font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
 }
 
 /* Loding */
 .Loading {
+  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fdce17;
 }
 .Loading h4 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1f64ff;
 }
 
 /* DiaryItems */
@@ -152,11 +175,16 @@ header button {
   margin-bottom: 24px;
   padding: 5px 15px 20px;
   border: 1px solid #ececec;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 0 7px #dedede;
 }
+
+.ItemWrapper .diary_content {
+  cursor: pointer;
+}
+
 .DiaryItem {
-  padding: 15px 0;
+  padding: 15px 10px;
   border-bottom: 1px solid #e2e2e2;
   display: flex;
   justify-content: space-between;
@@ -164,8 +192,7 @@ header button {
 
 .DiaryItem .emotion_img_wrapper {
   cursor: pointer;
-  height: 36px;
-  border-radius: 5px;
+  height: 42px;
   display: flex;
   justify-content: center;
 }
@@ -182,6 +209,10 @@ header button {
   font-size: 16px;
 }
 
+.DiaryItem .diary_date span {
+  color: #012c91;
+}
+
 .diary_time {
   font-size: 13px;
   color: #999;
@@ -195,6 +226,13 @@ header button {
 .DiaryItem .btn_wrapper {
   position: relative;
   min-width: 70px;
+  text-align: right;
+}
+
+.DiaryItem .btn_wrapper button {
+  padding: 5px 10px;
+  background: transparent;
+  font-size: 20px;
 }
 
 .DiaryItem .correction_delete {
@@ -227,11 +265,21 @@ header button {
 }
 
 .DiaryEditor section {
-  margin-bottom: 40px;
+  margin-bottom: 28px;
+}
+
+.flex_diaryeditor {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex_diaryeditor .input_box {
+  margin-top: 15px;
 }
 
 .DiaryEditor h4 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -239,22 +287,20 @@ header button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #ececec;
-  font-size: 20px;
-  font-family: "Noto Sans KR", sans-serif;
+  background-color: #f5f5f5;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .DiaryEditor textarea {
   padding: 20px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   box-sizing: border-box;
   width: 100%;
   min-height: 200px;
   resize: vertical;
   border: none;
-  background-color: #ececec;
+  background-color: #f5f5f5;
 }
 
 .todayDiary {
@@ -263,6 +309,10 @@ header button {
 }
 .todayDiary button {
   margin: 20px 0;
+  background-color: rgba(31, 98, 255, 0.15);
+  color: #1f64ff;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .todayDiary input {
@@ -279,16 +329,16 @@ header button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #ececec;
 }
 
 .emotion_list_wrapper {
   display: grid;
   grid-template-columns: repeat(5, auto);
   gap: 2%;
+  border-radius: 10px;
 }
 
 .EmotionItem img {
@@ -296,52 +346,67 @@ header button {
   margin-bottom: 10px;
 }
 .EmotionItem span {
-  font-size: 18px;
+  font-size: 14px;
+  color: #777;
 }
 
-.EmotionItem_on_1 {
-  background-color: #64c964;
-  color: #fff;
+.EmotionItem_on_1 img,
+.EmotionItem_on_2 img,
+.EmotionItem_on_3 img,
+.EmotionItem_on_4 img,
+.EmotionItem_on_5 img {
+  width: 70%;
+  animation: emotion-img 1s infinite;
 }
 
-.EmotionItem_on_2 {
-  background-color: #9dd772;
-  color: #fff;
+.EmotionItem_on_1 span,
+.EmotionItem_on_2 span,
+.EmotionItem_on_3 span,
+.EmotionItem_on_4 span,
+.EmotionItem_on_5 span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
 }
 
-.EmotionItem_on_3 {
-  background-color: #fdce17;
-  color: #fff;
+@keyframes emotion-img {
+  0% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
 }
 
-.EmotionItem_on_4 {
-  background-color: #fd8446;
-  color: #fff;
-}
-
-.EmotionItem_on_5 {
-  background-color: #fd565f;
-  color: #fff;
-}
-
-.DiaryEditor_btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.DiaryEditor_btn button {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  letter-spacing: 4px;
 }
 
 /* Diary */
-.DiaryPage {
+.DiaryPage .head_btn_right button {
+  background-color: rgba(31, 98, 255, 0.1);
+  color: #1f64ff;
 }
 
 .DiaryPage section {
   width: 100%;
-  margin-bottom: 100px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.DiaryPage .DiaryPage-flex {
+  padding: 0 10px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .DiaryPage h4 {
@@ -349,47 +414,26 @@ header button {
   font-weight: bold;
 }
 
-.DiaryPage .diary_img_wrapper {
-  width: 250px;
-  height: 250px;
-  background-color: #ececec;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+.DiaryPage h4 .diary_time {
+  font-weight: initial;
+  font-size: 14px;
+  margin-left: 16px;
+}
+
+.DiaryPage .diary_img_wrapper img {
+  margin-right: 20px;
+  width: 50px;
+}
+
+.DiaryPage .diary_img_wrapper .diary_time {
 }
 
 .DiaryPage .diary_img_wrapper .emotion_descript {
   font-size: 25px;
 }
 
-.DiaryPage .diary_img_1 {
-  background-color: #64c964;
-  color: #fff;
-}
-
-.DiaryPage .diary_img_2 {
-  background-color: #9dd772;
-  color: #fff;
-}
-
-.DiaryPage .diary_img_3 {
-  background-color: #fdce17;
-  color: #fff;
-}
-
-.DiaryPage .diary_img_4 {
-  background-color: #fd8446;
-  color: #fff;
-}
-
-.DiaryPage .diary_img_5 {
-  background-color: #fd565f;
-  color: #fff;
-}
-
 .DiaryPage .diary_content_wrapper {
+  margin-bottom: 20px;
   width: 100%;
   background-color: #ececec;
   border-radius: 5px;
@@ -402,7 +446,6 @@ header button {
   padding: 20px;
   text-align: left;
   font-size: 20px;
-  font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
   line-height: 1.5;
 }

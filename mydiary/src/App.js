@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, New, Edit, Diary } from "./pages/index";
+import { Home, New, Edit, Diary, Loading } from "./pages/index";
 
 const reducer = (state, action) => {
   let newState = [];
@@ -37,10 +37,10 @@ function App() {
   const [data, dispatch] = useReducer(reducer, []);
 
   //로딩화먄
-  const [Loading, setLoading] = useState(true);
+  const [LoadingPage, setLoadingPage] = useState(true);
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false);
+      setLoadingPage(false);
     }, 1000);
   }, []);
 
@@ -102,8 +102,8 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <Routes>
-              {Loading ? (
-                <Route path="/" element={<h2>로딩화면</h2>} />
+              {LoadingPage ? (
+                <Route path="/" element={<Loading />} />
               ) : (
                 <Route path="/" element={<Home />} />
               )}

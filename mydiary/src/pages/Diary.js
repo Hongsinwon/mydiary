@@ -57,9 +57,7 @@ const Diary = () => {
       <div className="DiaryPage">
         <MyHeader
           headText={`${dateText}`}
-          leftChild={
-            <MyButton text={"< 뒤로가기"} onClick={() => navigate(-1)} />
-          }
+          leftChild={<MyButton text={"<"} onClick={() => navigate(-1)} />}
           rightChild={
             <MyButton
               text={"수정하기"}
@@ -68,22 +66,17 @@ const Diary = () => {
           }
         />
         <article>
-          <section>
-            <h4>오늘의 감정</h4>
-            <div
-              className={[
-                "diary_img_wrapper",
-                `diary_img_${curEmotionDate.emotion_id}`,
-              ].join(" ")}
-            >
+          <section className="DiaryPage-flex">
+            <h4>
+              📚 오늘의 일기 <span>[{curEmotionDate.emotion_descript}]</span>
+              <span className="diary_time">{date.time} 작성</span>
+            </h4>
+
+            <div className="diary_img_wrapper">
               <img src={curEmotionDate.emotion_img} />
-              <div className="emotion_descript">
-                {curEmotionDate.emotion_descript}
-              </div>
             </div>
           </section>
           <section>
-            <h4>오늘의 일기</h4>
             <img src={date.image} className="thumbNail" />
             <div className="diary_content_wrapper">
               <p>{date.content}</p>
