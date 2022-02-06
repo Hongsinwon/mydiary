@@ -60,7 +60,8 @@ const DiaryList = ({ diaryList }) => {
     <div className="DiaryList">
       <div className="menu_wrapper">
         <p className="menu_diary-length">
-          <span>📚</span> 오늘의 일기 <span>{diaryList.length}</span> 개
+          📚 일기
+          <span> {diaryList.length}</span> 개
         </p>
         <div className="left_col">
           <ControlMenu

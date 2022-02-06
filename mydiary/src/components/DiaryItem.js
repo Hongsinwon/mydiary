@@ -15,8 +15,6 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
       }
     };
 
-    console.log(image);
-
     document.body.addEventListener("click", onClick);
 
     return () => {
@@ -49,12 +47,13 @@ const DiaryItem = ({ id, emotion, time, content, date, image }) => {
   const onEdit = () => {
     navigate(`/edit/${id}`);
   };
-  const { onRemove } = useContext(DiaryDispatchContext);
+  const { onRemove, onCreate } = useContext(DiaryDispatchContext);
+
   const headleRemove = () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       onRemove(id);
-      navigate("/", { replace: true });
     }
+    onCreate();
   };
 
   //content.slice(0, 25)

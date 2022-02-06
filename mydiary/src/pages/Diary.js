@@ -58,19 +58,18 @@ const Diary = () => {
         <MyHeader
           headText={`${dateText}`}
           leftChild={<MyButton text={"<"} onClick={() => navigate(-1)} />}
-          rightChild={
-            <MyButton
-              text={"수정하기"}
-              onClick={() => navigate(`/edit/${date.id}`)}
-            />
-          }
         />
         <article>
           <section className="DiaryPage-flex">
-            <h4>
-              📚 오늘의 일기 <span>[{curEmotionDate.emotion_descript}]</span>
-              <span className="diary_time">{date.time} 작성</span>
-            </h4>
+            <div>
+              <h4>
+                📚 오늘의 일기 
+                <span className="DiaryPage-emotion">
+                  [기분 : {curEmotionDate.emotion_descript}]
+                </span>
+              </h4>
+              <p className="diary_time">{date.time} 작성</p>
+            </div>
 
             <div className="diary_img_wrapper">
               <img src={curEmotionDate.emotion_img} />
@@ -83,6 +82,12 @@ const Diary = () => {
             </div>
           </section>
         </article>
+        <div className="Diary-correction">
+          <MyButton
+            text={"수정하기"}
+            onClick={() => navigate(`/edit/${date.id}`)}
+          />
+        </div>
       </div>
     );
   }

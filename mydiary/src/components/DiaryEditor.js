@@ -102,7 +102,7 @@ const DiaryEditor = ({ isEdit, originDate }) => {
       />
       <div>
         <section className="flex_diaryeditor">
-          <h4>📆 오늘은 언제인가요?</h4>
+          <h4>📆 오늘은?</h4>
           <div className="input_box">
             <input
               className="input_date"
