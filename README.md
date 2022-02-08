@@ -1,7 +1,7 @@
-[개인 프로젝트] 2022.1.17 ~ 2022.2.06
-사용언어 - html, css, React.js, firebase
+<p>[개인 프로젝트] 2022.1.17 ~ 2022.2.06</p>
+<p>사용언어 - html, css, React.js, firebase</p>
 
-나의 성장일기 - My Diary https://hongsinwon-mydiary.web.app/
+<h1>나의 성장일기 - My Diary https://hongsinwon-mydiary.web.app/</h1>
 
 [ 구현기능 ]
 
