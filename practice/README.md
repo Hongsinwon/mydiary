@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+<b>[개인 프로젝트] 2022.1.17 ~ 2022.2.06</b>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>나의 성장일기 - My Diary </br> https://hongsinwon-mydiary.web.app/</h1>
 
-## Available Scripts
+## 구현 기능 
+  1. 로딩화면
+  2. 글 작성 + 수정 + 삭제
+  3. 이미지 첨부
+  4. 달마다 리스트 출력
+  5. 최신순/과거순 + 좋은기분/나쁜기분 분류 옵션
 
-In the project directory, you can run:
+</br>
 
-### `npm start`
+## 활용 기술
+  1. html
+  2. css
+  3. React.js
+  4. firebase
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</br>
 
-### `npm test`
+## 개요
+- React로 진행하는 두번째 프로젝트입니다. 배포는 firebase로 진행하였습니다. 
+- 내용을 저장하기 위하여 javascript의 localstorage을 통하여 저장을 진행하였습니다. 
+- 이미지는 파일 API인 new FileReader()을 통하여 readAsDataURL() 을 이용해 문자열로 반환하여 출력하였습니다.
+- 작성날짜, 시간을 간략하게 출력하였습니다.
+</br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+--------------------------------------------
+  
+  </br>
+  
+## 완성된 페이지
 
-### `npm run build`
+#### 1. 로딩
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 2. 메인 페이지
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### 3. 글 작성 + 수정
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 4. 글 목록
