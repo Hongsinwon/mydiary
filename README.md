@@ -22,7 +22,7 @@
 
 ## 개요
 - React로 진행하는 두번째 프로젝트입니다. 배포는 firebase로 진행하였습니다. 
-- 내용을 저장하기 위하여 javascript의 localstorage을 통하여 저장을 진행하였습니다. 
+- 내용을 저장하기 위하여 브라우저 저장소인 localstorage을 통하여 저장을 진행하였습니다. 
 - 이미지는 파일 API인 new FileReader()을 통하여 readAsDataURL() 을 이용해 문자열로 반환하여 출력하였습니다.
 - 작성날짜, 시간을 간략하게 출력하였습니다.
 </br>
