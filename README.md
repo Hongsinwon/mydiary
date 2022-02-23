@@ -12,9 +12,9 @@
 </br>
 
 ## 활용 기술
-  1. html
-  2. css
-  3. React.js
+  1. React.js
+  2. localstorage
+  3. css3
   4. firebase
 
 
